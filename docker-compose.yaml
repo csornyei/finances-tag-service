@@ -1,0 +1,15 @@
+services:
+  project:
+    build: 
+      context: .
+      dockerfile: Dockerfile
+    container_name: project
+    restart: always
+    ports:
+      - "8081:8000"
+    networks:
+      - finances-network
+
+networks:
+  finances-network:
+    external: true

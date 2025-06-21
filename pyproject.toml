@@ -1,5 +1,5 @@
 [project]
-name = "PROJECT_NAME"
+name = "tag_service"
 version = "0.0.0"
 description = ""
 authors = [{ name = "Mate Csornyei", email = "mate@csornyei.com" }]
@@ -14,7 +14,7 @@ dependencies = [
 ]
 
 [tool.poetry]
-packages = [{ include = "PROJECT_NAME", from = "src" }]
+packages = [{ include = "tag_service", from = "src" }]
 
 
 [tool.poetry.group.dev.dependencies]

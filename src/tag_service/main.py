@@ -2,8 +2,8 @@ import time
 
 from fastapi import FastAPI, HTTPException, Request
 
-from PROJECT_NAME.logger import logger
-from PROJECT_NAME.routes import router
+from tag_service.logger import logger
+from tag_service.routes import router
 
 app = FastAPI()
 

@@ -30,6 +30,6 @@ ENV VIRTUAL_ENV=/app/.venv \
 
 COPY --from=builder ${VIRTUAL_ENV} ${VIRTUAL_ENV}
 
-COPY src/PROJECT_NAME ./PROJECT_NAME
+COPY src/tag_service ./tag_service
 
-ENTRYPOINT ["fastapi", "run", "PROJECT_NAME/main.py"]
+ENTRYPOINT ["fastapi", "run", "tag_service/main.py"]

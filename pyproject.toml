@@ -10,7 +10,8 @@ dependencies = [
     "pydantic (>=2.11.3,<3.0.0)",
     "asyncpg (>=0.30.0,<0.31.0)",
     "greenlet (>=3.2.0,<4.0.0)",
-    "finances_shared @ git+https://github.com/csornyei/finances_shared.git@0.2.0",
+    # "finances_shared @ git+https://github.com/csornyei/finances_shared.git@0.3.0",
+    "finances_shared @ file:////Users/mate/Projects/csornyei_finances/finances_shared",
 ]
 
 [tool.poetry]

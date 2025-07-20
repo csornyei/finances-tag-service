@@ -1,15 +1,25 @@
 services:
-  project:
+  tag-service:
     build: 
       context: .
       dockerfile: Dockerfile
-    container_name: project
+    container_name: tag-service
     restart: always
     ports:
       - "8081:8000"
     networks:
-      - finances-network
+      - finances_shared_default
+    environment:
+      - POSTGRES_HOST=finances_postgres
+      - POSTGRES_PORT=5432
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_DB=postgres
+      - RABBITMQ_HOST=finances_rabbitmq
+      - RABBITMQ_PORT=5672
+      - RABBITMQ_USER=rabbitmq
+      - RABBITMQ_PASSWORD=rabbitmq
 
 networks:
-  finances-network:
+  finances_shared_default:
     external: true

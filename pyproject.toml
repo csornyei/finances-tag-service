@@ -6,30 +6,27 @@ authors = [{ name = "Mate Csornyei", email = "mate@csornyei.com" }]
 readme = "README.md"
 requires-python = ">=3.13,<4.0"
 dependencies = [
-    "fastapi[standard] (>=0.115.12,<0.116.0)",
-    "pydantic (>=2.11.3,<3.0.0)",
-    "asyncpg (>=0.30.0,<0.31.0)",
-    "greenlet (>=3.2.0,<4.0.0)",
-    "finances_shared @ git+https://github.com/csornyei/finances_shared.git@0.2.1",
+    "fastapi[standard] >=0.115.12,<0.116.0",
+    "pydantic >=2.11.3,<3.0.0",
+    "asyncpg >=0.30.0,<0.31.0",
+    "greenlet >=3.2.0,<4.0.0",
+    "finances_shared",
 ]
 
-[tool.poetry]
-packages = [{ include = "tag_service", from = "src" }]
+[dependency-groups]
+dev = [
+    "pytest >=8.3.5,<9",
+    "pytest-asyncio >=0.26.0,<1",
+    "httpx >=0.28.1,<0.29",
+    "ruff >=0.11.5,<0.12",
+    "black >=25.1.0,<26",
+    "isort >=6.0.1,<7",
+    "pre-commit >=4.2.0,<5",
+]
 
 
-[tool.poetry.group.dev.dependencies]
-pytest = "^8.3.5"
-pytest-asyncio = "^0.26.0"
-httpx = "^0.28.1"
-ruff = "^0.11.5"
-black = "^25.1.0"
-isort = "^6.0.1"
-pre-commit = { version = "^4.2.0" }
+[tool.uv.sources]
+finances_shared = { git = "git+https://github.com/csornyei/finances_shared.git", tag = "0.2.1" }
 
 [tool.ruff]
 target-version = "py313"
-
-
-[build-system]
-requires = ["poetry-core>=2.0.0,<3.0.0"]
-build-backend = "poetry.core.masonry.api"

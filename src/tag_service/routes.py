@@ -42,7 +42,10 @@ async def read_tag(tag_id_or_name: str, db=Depends(get_db)):
 
 @router.post("/tags/", response_model=schemas.TagOut)
 async def create_tag(tag: schemas.TagCreate, db=Depends(get_db)):
-    existing_tag = await read_tag_by_name(db, tag.name)
+    try:
+        existing_tag = await read_tag_by_name(db, tag.name)
+    except HTTPException:
+        existing_tag = None
 
     if existing_tag:
         logger.error(f"Tag with name '{tag.name}' already exists")
@@ -63,12 +66,12 @@ async def update_tag(tag_id: str, tag: schemas.TagUpdate, db=Depends(get_db)):
         logger.error(f"Tag with ID '{tag_id}' not found")
         raise HTTPException(status_code=404, detail="Tag not found")
 
-    updated_tag = await tag_controller.update_tag(db, UUID(tag_id), tag)
+    updated_tag = await tag_controller.update_tag(db, existing_tag, tag)
 
     return updated_tag
 
 
-@router.delete("/tags/{tag_id}", response_model=schemas.TagOut)
+@router.delete("/tags/{tag_id}", response_model=dict)
 async def delete_tag(tag_id: str, db=Depends(get_db)):
     existing_tag = await read_tag_by_id(db, tag_id=tag_id)
 

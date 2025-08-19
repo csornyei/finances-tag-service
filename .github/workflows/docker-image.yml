@@ -16,7 +16,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
       - name: Get Package Version
-        uses: SebRollen/toml-action@1.2.0
+        uses: SebRollen/toml-action@v1.2.0
         id: get_version
         with:
           path: ./pyproject.toml

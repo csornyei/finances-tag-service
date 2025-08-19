@@ -19,8 +19,8 @@ jobs:
         uses: SebRollen/toml-action@v1.2.0
         id: get_version
         with:
-          path: ./pyproject.toml
-          key: project.version
+          file: pyproject.toml
+          field: project.version
       - name: Log in to GHCR
         uses: docker/login-action@v3.5.0
         with:
